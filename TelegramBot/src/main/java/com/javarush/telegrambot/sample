@@ -1,0 +1,42 @@
+ // sendTextMessageAsync("Привет, будущий программист " + update.getMessage().getFrom().getFirstName());
+        if(getMessageText().equals("/start")){
+            sendTextMessageAsync("Привет, " + update.getMessage().getFrom().getFirstName());
+            System.out.println("Привет, " + update.getMessage().getFrom().getFirstName());
+        }
+        if(getMessageText().contains("меня зовут")){
+            sendTextMessageAsync("Рад познакомиться, я — *Кот*");
+        }
+        if(getMessageText().equals("/bye")){
+            sendTextMessageAsync("Asta la vista baby, " + update.getMessage().getFrom().getFirstName());
+        }
+
+        if(getMessageText().contains("картинка")){
+            sendTextMessageAsync("Бывало лучше, " + update.getMessage().getFrom().getFirstName());
+            sendPhotoMessageAsync("step_8_pic");
+        }
+
+        if(getMessageText().contains("животное")){
+            sendTextMessageAsync("выбери номер кота , " + update.getMessage().getFrom().getFirstName(),
+                    Map.of(
+                            "кот 1", "cat1", "кот 2", "cat2"
+                    ));
+        }
+        if (getCallbackQueryButtonKey().equals("cat1")){
+            sendPhotoMessageAsync("step_1_pic");
+        }
+        if (getCallbackQueryButtonKey().equals("cat2")){
+            sendPhotoMessageAsync("step_2_pic");
+        }
+
+
+        if(getMessageText().contains("кот")) {
+            sendTextMessageAsync("Вашу любимое животное? -Your pretty hme animal", Map.of(
+                    "Кот", "cat", "Собака", "dog"
+            ));
+            if (getCallbackQueryButtonKey().equals("cat")) {
+                sendPhotoMessageAsync("step_4_pic");
+            }
+            if (getCallbackQueryButtonKey().equals("dog")) {
+                sendPhotoMessageAsync("step_6_pic");
+            }
+        }
